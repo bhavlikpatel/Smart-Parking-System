@@ -1,0 +1,861 @@
+@use "~ag-grid-community/styles" as ag;
+@include ag.grid-styles();
+
+@import "variables";
+
+html {
+  overflow-y: auto !important;
+}
+
+@each $cp in $content-positions {
+  @each $name,
+    $c
+      in map-merge(
+        map-get($colors-custom, light),
+        map-get($colors-custom, solid)
+      )
+  {
+    .border-#{$cp}-#{$name} {
+      @if $cp==x {
+        border-left: 1px solid $c !important;
+        border-right: 1px solid $c !important;
+      } @else if $cp==y {
+        border-top: 1px solid $c !important;
+        border-bottom: 1px solid $c !important;
+      } @else {
+        border-#{$cp}: 1px solid $c !important;
+      }
+    }
+  }
+}
+
+@each $cp in $content-positions {
+  @each $name,
+    $c
+      in map-merge(
+        map-get($colors-custom, light),
+        map-get($colors-custom, solid)
+      )
+  {
+    .border-#{$cp}-#{$name}-thin {
+      @if $cp==x {
+        border-left: 1px solid thin $c !important;
+        border-right: 1px solid thin $c !important;
+      } @else if $cp==y {
+        border-top: 1px solid thin $c !important;
+        border-bottom: 1px solid thin $c !important;
+      } @else {
+        border-#{$cp}: 1px solid thin $c !important;
+      }
+    }
+  }
+}
+
+@each $position in $positions {
+  .position-#{$position} {
+    position: $position !important;
+  }
+}
+
+.cell-error {
+  background-color: opacify(map-get($colors-custom, "solid", "red"), 0.7);
+}
+
+@each $name,
+  $c
+    in map-merge(map-get($colors-custom, light), map-get($colors-custom, solid))
+{
+  .background-#{$name} {
+    background-color: $c !important;
+  }
+  @for $level from 1 through 9 {
+    .background-#{$name}-lighten-#{$level} {
+      background-color: lighten($c, $level * 10) !important;
+    }
+    .background-#{$name}-darken-#{$level} {
+      background-color: darken($c, $level * 10) !important;
+    }
+  }
+  .text-#{$name} {
+    color: $c !important;
+  }
+}
+
+.bottom-devider-shadow {
+  box-shadow: 0px 10px 20px -24px black;
+}
+.top-devider-shadow {
+  box-shadow: 0px -10px 20px -24px black;
+}
+.right-devider-shadow {
+  box-shadow: 10px 0px 20px -24px black;
+}
+.left-devider-shadow {
+  box-shadow: -10px 0px 20px -24px black;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transprent;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.white-text {
+  color: whitesmoke !important;
+}
+
+.light-text {
+  color: #ffffff48;
+}
+
+.v-btn__content {
+  text-transform: capitalize;
+}
+
+// genral text color
+.v-main {
+  color: $grey-text;
+}
+
+.v-label {
+  font-size: 14px !important;
+  text-transform: capitalize;
+}
+input::placeholder {
+  text-transform: capitalize;
+}
+.v-messages__message {
+  text-transform: capitalize;
+}
+
+.card {
+  transition: 0.1s;
+  border-radius: 0 !important;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  border: 1px solid rgba(128, 128, 128, 0.256);
+
+  &:hover {
+    box-shadow: 2px 2px 10px -5px rgb(0 0 0);
+  }
+}
+
+.selected-card {
+  @extend .border-x-light_blue;
+  @extend .border-y-light_blue;
+  box-shadow: 2px 2px 10px -5px rgb(0 0 0);
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.full-height {
+  height: 100% !important;
+}
+
+.cf-icon {
+  font-size: 13px !important;
+}
+
+.cf-card-text {
+  font-size: 15px;
+  color: map-get($colors-custom, "solid", "grey");
+}
+
+@media screen and (max-width: 1376px) {
+  .cf-card-text {
+    font-size: 11px;
+  }
+}
+
+.cf-card-space {
+  padding: 3px 0px !important;
+}
+
+//======| List |=======================================================================================================================
+
+.cf-list-btn {
+  background-color: map-get($colors-custom, "solid", "primary") !important ;
+  color: white !important;
+  border-radius: 0 !important;
+  height: 39px !important;
+  min-width: 40px !important;
+  padding: 0 !important;
+  .v-icon {
+    font-size: 17px !important;
+  }
+}
+.cf-list-delete-btn {
+  color: $cfSecondary !important;
+  border-radius: 0 !important;
+  height: 39px !important;
+  min-width: 40px !important;
+  padding: 0 !important;
+  .v-icon {
+    font-size: 22px !important;
+  }
+}
+
+//======| table |=======================================================================================================================
+
+.app-table {
+  height: calc(100vh - 292px);
+  // .ag-theme-material {
+  //   $params: map-merge(
+  //     $ag-theme-material-default-params,
+  //     (
+  //       header-background-color: map-get($colors-custom, "light", "light_grey"),
+  //       secondary-foreground-color: map-get($colors-custom, "solid", "grey"),
+  //       borders: true,
+  //     )
+  //   );
+
+  .ag-row-hover {
+    background-color: #fafafa;
+  }
+
+  --ag-borders-row: solid 1px;
+  --ag-row-border-color: #e6e7e8;
+
+  --ag-header-cell-hover-background-color: #dedede;
+
+  .ag-header {
+    border-bottom: 1px solid #e6e7e8 !important;
+    background-color: #e6e7e8 !important;
+    text-align: left;
+  }
+
+  .ag-cell-wrapper {
+    overflow: hidden;
+  }
+  .ag-header-cell-text {
+    text-transform: capitalize;
+    font-size: 0.85rem;
+    color: #58595b !important;
+  }
+  .ag-header-cell .text-body-2 {
+    text-transform: capitalize;
+    font-size: 0.85rem;
+    color: #58595b !important;
+  }
+  .ag-cell-value {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+  }
+  .ag-cell {
+    border: none;
+  }
+  .ag-header-cell .ag-focus-managed {
+    border: 1px solid #e6e7e8 !important;
+  }
+  .v-btn {
+    font-size: 13px !important;
+    top: -5px;
+    height: 25px !important;
+
+    .v-icon {
+      font-size: 16px !important;
+    }
+  }
+
+  // .ag-cell, .ag-full-width-row .ag-cell-wrapper.ag-row-group {
+  //   padding-left: 10px ;
+  //   padding-right: 10px ;
+  // }
+
+  .ag-checkbox-input-wrapper input {
+    background-color: transparent;
+  }
+  .ag-root-wrapper {
+    border-top-right-radius: 6px !important;
+    border-top-left-radius: 6px !important;
+    border-color: #e6e7e8 !important ;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+  .h-100 {
+    height: 100%;
+  }
+}
+
+.floating-btn-tr {
+  position: absolute !important;
+  z-index: 100 !important;
+  right: -5px !important;
+  top: -5px !important;
+}
+
+.floating-btn-br {
+  position: absolute !important;
+  z-index: 1000 !important;
+  right: 5px !important;
+  bottom: 5px !important;
+}
+
+.pos-rel {
+  position: relative !important;
+}
+
+.cf-zone-map #gmap .gmnoprint > div {
+  float: inherit !important;
+  margin-right: 4px !important;
+  & > button {
+    padding: 13px !important;
+  }
+}
+
+.cf-zone-map .map-delete-icon {
+  position: absolute !important;
+  top: 131px;
+  right: 9px;
+  background-color: white;
+  font-size: 19px !important;
+  padding: 11px 12px 11px 11px;
+  background: none rgb(255, 255, 255);
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px -1px !important;
+  display: block !important;
+}
+
+//Trip Planning
+
+.trip-info-title {
+  font-weight: normal;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+.trip-info-text {
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.trip-expansion-title {
+  color: white;
+  font-size: 0.9rem !important;
+  line-height: 1.25rem;
+  letter-spacing: 0.0333333333em !important;
+}
+@media screen and (max-width: 1340px) {
+  .trip-expansion-title {
+    font-size: 0.8rem !important;
+  }
+  .trip-expansion-title i {
+    font-size: 20px !important;
+  }
+}
+
+.trip-expansion-body h6 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase !important;
+  color: map-get($colors-custom, "solid", "primary");
+}
+.trip-expansion-body span {
+  font-size: 14px;
+}
+
+//===== chat ==============
+
+.chat-box .v-input__slot {
+  box-shadow: none !important;
+}
+
+// ==== Vuejs Multipe Select ====
+
+.cf-multipe-select {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.cf-multipe-select .multiselect__tags {
+  border-radius: 4% !important;
+  border: 1px solid #8e99a2 !important;
+}
+.v-select.v-text-field input {
+  cursor: pointer;
+}
+.cf-multipe-select .multiselect__tags:focus {
+  color: rgba(0, 0, 0, 0.38) !important;
+  border-color: map-get($colors-custom, "solid", "primary") !important;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  font: 400 13.3333px Arial !important;
+  width: 100%;
+  box-shadow: none !important;
+}
+.multiselect__input,
+.multiselect__single {
+  color: rgba(0, 0, 0, 0.38) !important;
+  border-color: map-get($colors-custom, "solid", "primary") !important;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  font: 400 13.3333px Arial !important;
+  width: 100%;
+  box-shadow: none !important;
+}
+.cf-multipe-select .multiselect__tag {
+  background-color: map-get($colors-custom, "solid", "primary");
+}
+.cf-multipe-select .multiselect__tag .multiselect__tag-icon:after {
+  color: white !important;
+}
+
+.multiselect__tag-icon:focus,
+.multiselect__tag-icon:hover {
+  background: none !important;
+}
+.multiselect__content {
+  left: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%) !important;
+}
+.multiselect__content .multiselect__option {
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: start;
+  appearance: auto;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial !important;
+}
+
+.multiselect__option--selected {
+  background: map-get($colors-custom, "solid", "primary") !important;
+  color: white !important;
+}
+.multiselect__option--selected.multiselect__option--highlight {
+  background: map-get($colors-custom, "solid", "primary") !important;
+  color: white !important;
+}
+.multiselect__option--highlight {
+  background: map-get($colors-custom, "solid", "primary") !important;
+  color: white !important;
+}
+
+// === Trip Planning ======================================
+
+.cf-trip-expansion .v-expansion-panel-header__icon .v-icon {
+  color: white !important;
+}
+// ==== Right Detail panel CSS ===============================
+
+@mixin headerFont {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: 0.03125em;
+}
+
+.card-header-title {
+  @include headerFont;
+}
+
+@media screen and (max-width: 1280px) {
+  .card-header-title {
+    @include headerFont;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.0333333333em;
+  }
+}
+
+.card-content-title {
+  @include headerFont;
+}
+
+@media screen and (max-width: 1280px) {
+  .card-content-title {
+    @include headerFont;
+    font-size: 0.75rem !important;
+    line-height: 1.25rem;
+    letter-spacing: 0.0333333333em !important;
+  }
+}
+
+.cf-info-title {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 1400px) {
+  .cf-info-title {
+    font-size: 12px;
+  }
+}
+
+//=== Order List Card ======================================
+.order-list-checkbox {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
+@media screen and (max-width: 1300px) {
+  .order-list-checkbox {
+    position: absolute;
+    top: 14px;
+    left: 10px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .order-list-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+.card-header-grid {
+  display: grid !important;
+  grid-template-columns: 30px 1fr 1fr !important;
+  padding: 10px 16px !important;
+}
+
+@media screen and (max-width: 1300px) {
+  .card-header-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding-left: 50px !important;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+//opeation inisde overwride css
+.driver-app-expansion .v-expansion-panel-content__wrap {
+  padding: 0px !important;
+}
+.w-100 {
+  width: 100%;
+}
+.H-100 {
+  height: 100%;
+}
+.ba {
+  border: 1px solid #80808069;
+}
+@media screen and (max-width: 768px) {
+  .display-sm-none {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .display-md-none {
+    display: none !important;
+  }
+}
+
+.remove-number-spinners {
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+//========= Override Css vue-formulate ================================================================================
+
+.formulate-input-wrapper {
+  position: relative;
+  top: 0;
+  .formulate-input-label {
+    position: absolute;
+    top: -8px;
+    left: 15px;
+    background-color: white;
+    padding: 0px 0.5rem;
+    font-weight: 400;
+    z-index: 1;
+    transition: 0.2s ease-out 100ms;
+  }
+}
+
+.formulate-input {
+  .formulate-input-element {
+    max-width: 100%;
+    input {
+      height: 50px;
+    }
+    select:not([multiple="multiple"]) {
+      height: 50px;
+    }
+  }
+}
+.formulate-input[data-type="radio"] .formulate-input-label {
+  top: 0;
+  left: 0;
+  position: relative !important;
+}
+// =========== Details View ==============================================================
+
+@mixin details-card-subtitle {
+  color: map-get($colors-custom, "solid", "primary");
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+}
+
+.card-detail {
+  height: 100%;
+  .card-detail-action {
+    background-color: #f8e7dc;
+    -webkit-box-shadow: inset 0px 2px 13px -1px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: inset 0px 2px 13px -1px rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0px 2px 13px -1px rgba(0, 0, 0, 0.12);
+    button {
+      color: white;
+    }
+  }
+
+  h2 {
+    color: #403f3f;
+    margin-bottom: 12px;
+    font-size: 34px;
+    font-weight: bolder;
+    .v-chip {
+      color: white;
+      letter-spacing: 4px;
+      height: 24px;
+      font-size: 12px;
+    }
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 22px;
+    color: #7070708c;
+  }
+  h4 {
+    color: #1b1818;
+    margin-bottom: 12px;
+    font-size: 22px;
+    font-weight: bolder;
+    .v-chip {
+      color: white;
+      letter-spacing: 4px;
+      height: 24px;
+      font-size: 12px;
+    }
+  }
+  .card-detail-subcard {
+    -webkit-box-shadow: -1px 1px 4px 2px rgba(0, 0, 0, 0.06) !important;
+    -moz-box-shadow: -1px 1px 4px 2px rgba(0, 0, 0, 0.06) !important;
+    box-shadow: -1px 1px 4px 2px rgba(0, 0, 0, 0.06) !important;
+    padding: 0.6rem;
+
+    .v-card__title {
+      padding: 8px 10px;
+    }
+    .v-card__text {
+      .v-list-item__subtitle {
+        margin-top: 6px;
+        font-size: 10px;
+      }
+    }
+    button {
+      background-color: map-get($colors-custom, "solid", "primary");
+      i {
+        color: white !important;
+      }
+    }
+    h5 {
+      @include details-card-subtitle;
+      margin-left: 1rem;
+    }
+    hr {
+      border: 1px solid #8080802e;
+      margin: 10px 0px;
+    }
+    h6 {
+      font-weight: 300;
+      font-size: 14px;
+      color: #5a4d4d;
+    }
+    .detail-text {
+      color: black;
+      text-transform: capitalize;
+      padding: 6px 0px;
+      font-weight: 600;
+    }
+  }
+}
+
+.bg-readonly {
+  background-color: #80808052;
+}
+//Common Class
+
+.w-100 {
+  width: 100%;
+}
+.h-100 {
+  height: 100%;
+}
+.cm-log-card {
+  width: 500px;
+  -webkit-box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.16);
+  h5 {
+    @include details-card-subtitle;
+    margin-left: 1rem;
+  }
+}
+.p-relative {
+  position: relative;
+}
+
+//=== Process bar =====
+
+.timeline {
+  bottom: 11.5px;
+}
+.timeline-btn {
+  height: 20px !important;
+  width: 20px !important;
+  z-index: 1 !important;
+}
+
+.progress-bar > .grid-column {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  // border: 1px solid red;
+}
+
+.cm-details-card {
+  @media screen and (min-width: 1300px) {
+    .details-title {
+      font-size: 0.7rem;
+    }
+    .details-Sub-text {
+      color: grey;
+      font-size: 0.7rem;
+    }
+  }
+
+  .details-title {
+    font-size: 0.85rem;
+  }
+
+  .details-Sub-text {
+    color: grey;
+    font-size: 0.85rem;
+  }
+}
+//Base details card UI
+
+.base-details-card {
+  .v-card__title {
+    padding: 5px;
+  }
+  .v-expansion-panel-content__wrap {
+    padding: 0px !important;
+  }
+}
+
+//=== Main Layout ======================================================================================================
+
+.app-main-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.c-app-grid {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+}
+.h-100 {
+  height: 100%;
+}
+.c-box-shadow {
+  box-shadow: 1px 3px 8px -3px rgba(0, 0, 0, 0.37) !important;
+}
+
+//=== Custom Tab UI ======================================================================================================
+.app-custom-tab {
+  .v-tabs-slider-wrapper {
+    height: auto !important;
+  }
+  .v-item-group {
+    background-color: map-get($colors-custom, "solid", "primary") !important;
+    .v-icon {
+      color: white;
+    }
+  }
+  .v-tab--active {
+    border-bottom: 6px solid white !important;
+    span {
+      color: white !important;
+    }
+  }
+  span {
+    color: #ffffff9c;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    line-height: 10px;
+  }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.25s ease-out;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+
+.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
+  color: map-get($colors-custom, solid, primary) !important;
+}

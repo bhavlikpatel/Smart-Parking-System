@@ -1,0 +1,77 @@
+{
+  "name": "parking_project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@braid/vue-formulate": "^2.5.3",
+    "@chenfengyuan/vue-barcode": "^1.0.1",
+    "@google/markerclusterer": "^2.0.9",
+    "@googlemaps/google-maps-services-js": "^3.3.16",
+    "@googlemaps/js-api-loader": "^1.14.3",
+    "adler-32": "^1.3.1",
+    "ag-grid-community": "^28.2.0",
+    "ag-grid-vue": "^28.2.0",
+    "chart.js": "^2.9.4",
+    "core-js": "^3.8.3",
+    "encrypt-storage": "^2.12.12",
+    "html2canvas": "^1.4.1",
+    "html2pdf": "^0.0.11",
+    "html2pdf.js": "^0.10.1",
+    "jsbarcode": "^3.11.5",
+    "jspdf": "^2.5.1",
+    "messageformat": "^2.3.0",
+    "moment": "^2.29.4",
+    "ts-overlapping-marker-spiderfier": "^1.0.3",
+    "vue": "^2.6.14",
+    "vue-chartjs": "^3.5.1",
+    "vue-i18n": "^8.27.2",
+    "vue-multiselect": "^2.1.6",
+    "vue-property-decorator": "^9.1.2",
+    "vue-router": "^3.6.5",
+    "vue-server-renderer": "^2.7.13",
+    "vuetify": "^2.6.0",
+    "worker-loader": "^3.0.8",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "axios": "^0.18.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-axios": "~0.0.4",
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify-loader": "^1.7.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

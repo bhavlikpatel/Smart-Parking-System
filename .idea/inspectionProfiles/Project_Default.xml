@@ -1,0 +1,33 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="4">
+            <item index="0" class="java.lang.String" itemvalue="django-cleanup" />
+            <item index="1" class="java.lang.String" itemvalue="django-storages" />
+            <item index="2" class="java.lang.String" itemvalue="django-import-export" />
+            <item index="3" class="java.lang.String" itemvalue="colorama" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="dms.serializers.order_serializers.WEEKEND" />
+          <option value="dms.models.common.Project.*" />
+          <option value="dms.models.common.Zone.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
