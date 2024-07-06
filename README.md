@@ -1,6 +1,4 @@
-# Car Parking Project
 
-git clone https://github.com/bhavinfero/parking_project.git
 
 #Forntend setup
 
